@@ -1,0 +1,49 @@
+query proposals {
+    proposalCreateds{
+        id
+        description
+        transactionHash
+        voteEnd
+        voteStart
+        proposer
+        proposalId
+    }
+}
+
+
+query votes {
+    voteCasts{
+        proposalId
+        transactionHash
+        id
+        voter
+    }
+}
+
+query votesByProposal($proposalId: BigInt!) {
+    voteCasts(where: {proposalId: $proposalId}){
+        proposalId
+        transactionHash
+        id
+        voter
+        reason
+        support
+        weight
+        id
+        transactionHash
+        blockNumber
+        blockTimestamp
+    }
+}
+
+query proposalById($proposalId: BigInt!) {
+    proposalCreateds(where: {proposalId: $proposalId}){
+        id
+        description
+        transactionHash
+        voteEnd
+        voteStart
+        proposer
+        proposalId
+    }
+}
